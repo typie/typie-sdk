@@ -90,6 +90,8 @@ export default class Haste {
     getExecList(): this;
     fuzzySearch(value: string): this;
     getRows(limit: number): this;
+    setPkg(name: string): this;
+    setDB(name: string): this;
     orderBy(field: string): this;
     asc(): this;
     desc(): this;

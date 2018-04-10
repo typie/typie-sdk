@@ -85,6 +85,16 @@ export default class Haste
         return this;
     }
 
+    setPkg(name: string) {
+        this.packageName = name;
+        return this;
+    }
+
+    setDB(name: string) {
+        this.db = name;
+        return this;
+    }
+
     orderBy(field: string) {
         this._search.direction = 'asc';
         this._search.orderBy = field;
