@@ -4,7 +4,7 @@ import HasteRowItem from "./models/HasteRowItem";
 import SearchObject from "./models/SearchObject";
 import Haste from "./Haste";
 import * as Path from "path";
-const defaultIcon = 'pkg-icon.png';
+const defaultIcon = '/pkg-icon.png';
 
 export default class AbstractHastePackage
 {
@@ -22,7 +22,7 @@ export default class AbstractHastePackage
         this.packageName = this.constructor.name;
         this.pkgConfig   = config;
         this.packagePath = pkgPath;
-        this.icon        = Path.join(this.packagePath, defaultIcon);
+        this.icon        = this.packagePath + defaultIcon;
 
         /**
          * @type {Haste}

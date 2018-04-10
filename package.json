@@ -16,5 +16,8 @@
     "typescript": "^2.8.1",
     "webpack": "^4.5.0",
     "webpack-cli": "^2.0.13"
+  },
+  "dependencies": {
+    "gonode": "github:rotemgrim/gonode"
   }
 }
