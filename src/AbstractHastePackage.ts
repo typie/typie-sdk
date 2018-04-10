@@ -1,10 +1,6 @@
-//const MainWindowController = require("../controllers/MainWindowController");
-//const {HastePackageInterface} = require("./models/HastePackageInterface");
-import HasteRowItem from "./models/HasteRowItem";
-import SearchObject from "./models/SearchObject";
-import Haste from "./Haste";
+import {Haste, SearchObject, HasteRowItem, getPath} from "./index";
 import * as Path from "path";
-const defaultIcon = '/pkg-icon.png';
+const defaultIcon = 'pkg-icon.png';
 
 export default class AbstractHastePackage
 {
@@ -22,7 +18,7 @@ export default class AbstractHastePackage
         this.packageName = this.constructor.name;
         this.pkgConfig   = config;
         this.packagePath = pkgPath;
-        this.icon        = this.packagePath + defaultIcon;
+        this.icon        = getPath(pkgPath + defaultIcon);
 
         /**
          * @type {Haste}

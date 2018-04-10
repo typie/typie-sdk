@@ -10,5 +10,16 @@ export {
     HasteRowItem,
     GoDispatcher,
     Haste,
-    SearchObject
+    SearchObject,
+    getPath
+};
+
+const isDev = require('electron-is-dev');
+let getPath = function(staticPath) {
+    console.error('isDevelopment', isDev);
+    if (!isDev) {
+        return '../static/' + staticPath;
+    } else {
+        return staticPath;
+    }
 };
