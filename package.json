@@ -4,14 +4,19 @@
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
-    "build": "webpack --env dev",
+    "build": "npm run check && webpack --env prod",
+    "buildAndDeploy": "npm run build && npm run deploy",
     "dev": "webpack --progress --colors --watch --env dev",
-    "check": "./node_modules/.bin/tslint --project tsconfig.json --config tslint.json"
+    "check": "./node_modules/.bin/tslint --project tsconfig.json --config tslint.json",
+    "deploy": "./node_modules/.bin/gulp deploy"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "dts-webpack-plugin": "0.0.9",
+    "gulp": "^4.0.0",
+    "gulp-clean": "^0.4.0",
+    "js-yaml": "^3.11.0",
     "ts-loader": "^4.1.0",
     "tslint": "^5.9.1",
     "tslint-loader": "^3.6.0",
