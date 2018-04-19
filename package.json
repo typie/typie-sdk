@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "npm run check && webpack --env prod",
     "buildAndDeploy": "npm run build && npm run deploy",
@@ -13,7 +14,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "dts-webpack-plugin": "0.0.9",
     "gulp": "^4.0.0",
     "gulp-clean": "^0.4.0",
     "js-yaml": "^3.11.0",

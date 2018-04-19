@@ -64,6 +64,10 @@ export default class AbstractHastePackage {
         console.log("No override 'activateUponEntry' method found in " + this.packageName);
     }
 
+    public activateUponTabEntry() {
+        this.activateUponEntry();
+    }
+
     public getIcon(icon) {
         return Path.join(this.packagePath, icon);
     }
@@ -74,7 +78,7 @@ export default class AbstractHastePackage {
             console.log("registering shortcut " + this.pkgConfig.shortcut + " to " + this.getPackageName());
             this.win.registerKey(this.pkgConfig.shortcut, () => {
                 this.win.send("changePackage", [this.getPackageName()]);
-                this.activateUponEntry();
+                this.activateUponTabEntry();
             });
         }
     }
