@@ -1,0 +1,41 @@
+export default class HasteRowItem {
+    static create(data: any): HasteRowItem;
+    db: string;
+    d: string;
+    i: string;
+    t: string;
+    p: string;
+    title: string;
+    c: number;
+    score?: number;
+    u?: number;
+    constructor(title?: string);
+    setTitle(value: string): void;
+    getTitle(): string;
+    setPath(value: string): void;
+    getPath(): string;
+    setDB(value: string): void;
+    getDB(): string;
+    setDescription(value: string): void;
+    getDescription(): string;
+    setIcon(value: string): void;
+    getIcon(): string;
+    setPackage(value: string): void;
+    getPackage(): string;
+    setCount(value: number): void;
+    getCount(): number;
+    countUp(): void;
+    setUnixtime(value: number | undefined): void;
+    getUnixtime(): number | undefined;
+    setScore(value: number | undefined): void;
+    getScore(): number | undefined;
+    toPayload(): {
+        c: number;
+        d: string;
+        db: string;
+        i: string;
+        p: string;
+        t: string;
+        title: string;
+    };
+}
