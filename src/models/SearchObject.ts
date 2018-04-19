@@ -1,9 +1,8 @@
-export default class SearchObject
-{
+export default class SearchObject {
     public value: string;
-    public pkgList: Array<string>;
+    public pkgList: string[];
     constructor() {
-        this.value = '';
+        this.value = "";
         this.pkgList = [];
     }
 }

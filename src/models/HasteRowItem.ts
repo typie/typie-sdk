@@ -1,6 +1,19 @@
+export default class HasteRowItem {
 
-export default class HasteRowItem
-{
+    public static create(data): HasteRowItem {
+        const item = new HasteRowItem();
+        item.setDB(data.db);
+        item.setPackage(data.t);
+        item.setTitle(data.title);
+        item.setPath(data.p);
+        item.setDescription(data.d);
+        item.setIcon(data.i);
+        item.setCount(data.c);
+        item.setScore(data.score);
+        item.setUnixtime(data.u);
+        return item;
+    }
+
     public db: string;
     public d: string;
     public i: string;
@@ -22,95 +35,91 @@ export default class HasteRowItem
         this.c = 0;
     }
 
-    setTitle(value: string){
+    public setTitle(value: string) {
         this.title = value;
     }
-    getTitle(): string {
+
+    public getTitle(): string {
         return this.title;
     }
 
-    setPath(value: string){
+    public setPath(value: string) {
         this.p = value;
     }
-    getPath(): string {
+
+    public getPath(): string {
         return this.p;
     }
 
-    setDB(value: string){
+    public setDB(value: string) {
         this.db = value;
     }
-    getDB(): string {
+
+    public getDB(): string {
         return this.db;
     }
 
-    setDescription(value: string){
+    public setDescription(value: string) {
         this.d = value ? value : "";
     }
-    getDescription(): string {
+
+    public getDescription(): string {
         return this.d;
     }
 
-    setIcon(value: string){
+    public setIcon(value: string) {
         this.i = value;
     }
-    getIcon(): string {
+
+    public getIcon(): string {
         return this.i;
     }
 
-    setPackage(value: string){
+    public setPackage(value: string) {
         this.t = value;
     }
-    getPackage(): string {
+
+    public getPackage(): string {
         return this.t;
     }
 
-    setCount(value: number){
+    public setCount(value: number) {
         this.c = value;
     }
-    getCount(): number {
+
+    public getCount(): number {
         return this.c;
     }
-    countUp(): void {
+
+    public countUp(): void {
         this.c = this.c + 1;
     }
 
-    setUnixtime(value: number | undefined){
+    public setUnixtime(value: number | undefined) {
         this.u = value;
     }
-    getUnixtime(): number | undefined {
+
+    public getUnixtime(): number | undefined {
         return this.u;
     }
 
-    setScore(value: number | undefined){
+    public setScore(value: number | undefined) {
         this.score = value;
     }
-    getScore(): number | undefined {
+
+    public getScore(): number | undefined {
         return this.score;
     }
 
-    static create(data): HasteRowItem {
-        let item = new HasteRowItem();
-        item.setDB(data.db);
-        item.setPackage(data.t);
-        item.setTitle(data.title);
-        item.setPath(data.p);
-        item.setDescription(data.d);
-        item.setIcon(data.i);
-        item.setCount(data.c);
-        item.setScore(data.score);
-        item.setUnixtime(data.u);
-        return item;
-    }
-
-    toPayload() {
+    public toPayload() {
         return {
+            c: this.getCount(),
+            d: this.getDescription(),
             db: this.getDB(),
+            i: this.getIcon(),
+            p: this.getPath(),
             t: this.getPackage(),
             title: this.getTitle(),
-            p: this.getPath(),
-            d: this.getDescription(),
-            i: this.getIcon(),
-            c: this.getCount(),
         };
     }
 }

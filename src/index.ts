@@ -1,23 +1,23 @@
 
 import AbstractHastePackage from "./AbstractHastePackage";
-import HasteRowItem from "./models/HasteRowItem";
-import SearchObject from "./models/SearchObject";
 import GoDispatcher from "./GoDispatcher";
 import Haste from "./Haste";
+import HasteRowItem from "./models/HasteRowItem";
+import SearchObject from "./models/SearchObject";
 
 export {
     AbstractHastePackage,
-    HasteRowItem,
+    getPath,
     GoDispatcher,
     Haste,
+    HasteRowItem,
     SearchObject,
-    getPath
 };
 
-const isDev = require('electron-is-dev');
-let getPath = function(staticPath) {
+import * as isDev from "electron-is-dev";
+const getPath = (staticPath) => {
     if (!isDev) {
-        return '../static/' + staticPath;
+        return "../static/" + staticPath;
     } else {
         return staticPath;
     }

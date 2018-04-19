@@ -1,11 +1,10 @@
 import GoDispatcher from "./GoDispatcher";
+import HasteRowItem from "./models/HasteRowItem";
 import Packet from "./models/Packet";
 import SearchPayload from "./models/SearchPayload";
-import HasteRowItem from "./models/HasteRowItem";
 
-export default class Haste
-{
-    private _search: SearchPayload = new SearchPayload;
+export default class Haste {
+    private search: SearchPayload = new SearchPayload();
     private db: string;
     private packageName: string;
 
@@ -15,121 +14,104 @@ export default class Haste
     constructor(packageName: string, db?: string) {
         this.db = db ? db : packageName;
         this.packageName = packageName;
-        this.command = '';
+        this.command = "";
         this.payload = {};
     }
 
-    pasteText() {
-        this.command = 'pasteText';
+    public pasteText() {
+        this.command = "pasteText";
         this.payload = {};
         return this;
     }
 
-    addCollection() {
-        this.command = 'addCollection';
+    public addCollection() {
+        this.command = "addCollection";
         this.payload = {name: this.packageName};
         return this;
     }
 
-    updateCalled(item) {
+    public updateCalled(item) {
         item.countUp();
         return this.insert(item, true);
     }
 
-    multipleInsert(itemList) {
-        this.command = 'multipleInsert';
+    public multipleInsert(itemList) {
+        this.command = "multipleInsert";
         this.payload = itemList;
         return this;
     }
 
-    insert(item: HasteRowItem, persist: boolean = true) {
+    public insert(item: HasteRowItem, persist = true) {
         item.setDB(this.db);
         item.setPackage(this.packageName);
-        this.command = persist ? 'insertPersist' : 'insert';
+        this.command = persist ? "insertPersist" : "insert";
         this.payload = item.toPayload();
         return this;
     }
 
-    getKey(value: string) {
+    public getKey(value: string) {
         this.payload.value = value;
         this.payload.db = this.db;
         this.payload.packageName = this.packageName;
-        this.command = 'getKey';
+        this.command = "getKey";
         return this;
     }
 
-    getExecList() {
+    public getExecList() {
         this.payload.db = this.db;
         this.payload.packageName = this.packageName;
-        this.command = 'getExecList';
+        this.command = "getExecList";
         return this;
     }
 
-    fuzzySearch(value: string) {
-        this._search.value = value;
-        this._search.type = 'fuzzy';
-        this._search.db = this.db;
-        this._search.packageName = this.packageName;
-        this.command = 'search';
-        this.payload = this._search;
+    public fuzzySearch(value: string) {
+        this.search.value = value;
+        this.search.type = "fuzzy";
+        this.search.db = this.db;
+        this.search.packageName = this.packageName;
+        this.command = "search";
+        this.payload = this.search;
         return this;
     }
 
-    getRows(limit: number) {
-        this._search.limit = limit;
-        this._search.type = 'getRows';
-        this._search.db = this.db;
-        this._search.packageName = this.packageName;
-        this.command = 'search';
-        this.payload = this._search;
+    public getRows(limit: number) {
+        this.search.limit = limit;
+        this.search.type = "getRows";
+        this.search.db = this.db;
+        this.search.packageName = this.packageName;
+        this.command = "search";
+        this.payload = this.search;
         return this;
     }
 
-    setPkg(name: string) {
+    public setPkg(name: string) {
         this.packageName = name;
         return this;
     }
 
-    setDB(name: string) {
+    public setDB(name: string) {
         this.db = name;
         return this;
     }
 
-    orderBy(field: string) {
-        this._search.direction = 'asc';
-        this._search.orderBy = field;
+    public orderBy(field: string) {
+        this.search.direction = "asc";
+        this.search.orderBy = field;
         return this;
     }
 
-    asc() {
-        this._search.direction = 'asc';
+    public asc() {
+        this.search.direction = "asc";
         return this;
     }
 
-    desc() {
-        this._search.direction = 'desc';
+    public desc() {
+        this.search.direction = "desc";
         return this;
     }
 
-    go() {
-        let packet = new Packet(this.command, this.payload);
+    public go(): Promise<any> {
+        const packet = new Packet(this.command, this.payload);
         return GoDispatcher.send(packet);
-    }
-
-    mouse() {
-        return {
-            up() {
-                GoDispatcher.send(new Packet("mouseMovement", {direction: "up"})).then().catch();
-            },
-            down() {
-                GoDispatcher.send(new Packet("mouseMovement", {direction: "down"})).then().catch();
-            },
-            left() {
-                GoDispatcher.send(new Packet("mouseMovement", {direction: "left"})).then().catch();
-            },
-            right() {
-                GoDispatcher.send(new Packet("mouseMovement", {direction: "right"})).then().catch();
-            }
-        }
     }
 }

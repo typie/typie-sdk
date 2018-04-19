@@ -1,11 +1,11 @@
 {
-    "compileOnSave": true,
-    "compilerOptions": {
-        "target": "es2016",
-        "module": "commonjs",
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
         "moduleResolution": "node",
         "declaration": true,
-        "declarationDir": "./",
+        "declarationDir": "./dist/",
         "removeComments": false,
         "pretty": true,
         "newLine": "LF",
@@ -19,6 +19,10 @@
         "noImplicitAny": false,
         "jsx": "preserve"
     },
+  "include": [
+    "src/**/*.ts",
+    "src/*.ts"
+  ],
     "exclude": [
       "node_modules"
     ],
