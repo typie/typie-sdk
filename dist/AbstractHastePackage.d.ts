@@ -4,7 +4,7 @@ export default class AbstractHastePackage {
     protected packageName: string;
     protected packagePath: string;
     protected icon: string;
-    protected haste: Haste | any;
+    protected haste: Haste;
     protected pkgConfig: any;
     protected win: any;
     constructor(win: any, config: any, pkgPath: any);

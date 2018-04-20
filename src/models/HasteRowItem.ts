@@ -35,64 +35,72 @@ export default class HasteRowItem {
         this.c = 0;
     }
 
-    public setTitle(value: string) {
+    public setTitle(value: string): HasteRowItem {
         this.title = value;
+        return this;
     }
 
     public getTitle(): string {
         return this.title;
     }
 
-    public setPath(value: string) {
+    public setPath(value: string): HasteRowItem {
         this.p = value;
+        return this;
     }
 
     public getPath(): string {
         return this.p;
     }
 
-    public setDB(value: string) {
+    public setDB(value: string): HasteRowItem {
         this.db = value;
+        return this;
     }
 
     public getDB(): string {
         return this.db;
     }
 
-    public setDescription(value: string) {
+    public setDescription(value: string): HasteRowItem {
         this.d = value ? value : "";
+        return this;
     }
 
     public getDescription(): string {
         return this.d;
     }
 
-    public setIcon(value: string) {
+    public setIcon(value: string): HasteRowItem {
         this.i = value;
+        return this;
     }
 
     public getIcon(): string {
         return this.i;
     }
 
-    public setPackage(value: string) {
+    public setPackage(value: string): HasteRowItem {
         this.t = value;
+        return this;
     }
 
     public getPackage(): string {
         return this.t;
     }
 
-    public setCount(value: number) {
+    public setCount(value: number): HasteRowItem {
         this.c = value;
+        return this;
     }
 
     public getCount(): number {
         return this.c;
     }
 
-    public countUp(): void {
+    public countUp(): HasteRowItem {
         this.c = this.c + 1;
+        return this;
     }
 
     public setUnixtime(value: number | undefined) {
@@ -103,8 +111,9 @@ export default class HasteRowItem {
         return this.u;
     }
 
-    public setScore(value: number | undefined) {
+    public setScore(value: number | undefined): HasteRowItem {
         this.score = value;
+        return this;
     }
 
     public getScore(): number | undefined {

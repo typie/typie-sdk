@@ -9,7 +9,7 @@ export default class AbstractHastePackage {
     protected packageName: string;
     protected packagePath: string;
     protected icon: string;
-    protected haste: Haste | any;
+    protected haste: Haste;
     protected pkgConfig: any;
     protected win: any;
 
@@ -20,7 +20,7 @@ export default class AbstractHastePackage {
         this.pkgConfig = config;
         this.packagePath = pkgPath;
         this.icon = getPath(pkgPath + defaultIcon);
-        this.haste = null;
+        this.haste = new Haste(this.packageName);
         this.loadConfig();
     }
 

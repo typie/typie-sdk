@@ -3,15 +3,20 @@ import HasteRowItem from "./models/HasteRowItem";
 import Packet from "./models/Packet";
 import SearchPayload from "./models/SearchPayload";
 
+// this is a little hack to use the global variable in TypeScript
+// it is used to get the go dispatcher from the main process we need it as a singleton
+const globalAny: any = global;
+
 export default class Haste {
     private search: SearchPayload = new SearchPayload();
     private db: string;
     private packageName: string;
-
     private command: string;
     private payload: any;
+    private goDispatcher: GoDispatcher;
 
     constructor(packageName: string, db?: string) {
+        this.goDispatcher = globalAny.GoDispatcher;
         this.db = db ? db : packageName;
         this.packageName = packageName;
         this.command = "";
@@ -111,7 +116,6 @@ export default class Haste {
     }
 
     public go(): Promise<any> {
-        const packet = new Packet(this.command, this.payload);
-        return GoDispatcher.send(packet);
+        return this.goDispatcher.send(new Packet(this.command, this.payload));
     }
 }
