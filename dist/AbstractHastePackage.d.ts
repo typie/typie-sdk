@@ -12,11 +12,13 @@ export default class AbstractHastePackage {
     getDefaultItem(value: any, description?: string, path?: string, icon?: string): HasteRowItem;
     insert(value: any, description?: string, path?: string, icon?: string): void;
     insertItem(item: HasteRowItem): void;
-    search(searchObj: SearchObject, callback: (data) => void): void;
+    search(obj: SearchObject, callback: (data) => void): void;
+    searchWithSubPkgs(obj: SearchObject, defaultDb: string, callback: (data) => void): void;
     activate(rowItem: HasteRowItem, callback: (data) => void): void;
-    activateUponEntry(): void;
-    activateUponTabEntry(): void;
+    activateUponEntry(item?: HasteRowItem): void;
+    activateUponTabEntry(item?: HasteRowItem): void;
     getIcon(icon: any): string;
     loadConfig(): void;
     destroy(): void;
+    private runSearch(obj, callback);
 }

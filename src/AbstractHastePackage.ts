@@ -47,10 +47,19 @@ export default class AbstractHastePackage {
             .catch(err => console.error(err));
     }
 
-    public search(searchObj: SearchObject, callback: (data) => void) {
-        this.haste.fuzzySearch(searchObj.value).orderBy("score").desc().go()
-            .then(data => callback(data))
-            .catch(err => console.log(err));
+    public search(obj: SearchObject, callback: (data) => void) {
+        this.runSearch(obj, callback);
+    }
+
+    public searchWithSubPkgs(obj: SearchObject, defaultDb: string, callback: (data) => void) {
+        if (obj.pkgList.length > 1) {
+            const pkg = obj.pkgList.join("->");
+            this.haste.setPkg(pkg).setDB(this.packageName);
+            this.runSearch(obj, callback);
+        } else {
+            this.haste.setPkg(this.packageName).setDB(defaultDb);
+            this.runSearch(obj, callback);
+        }
     }
 
     public activate(rowItem: HasteRowItem, callback: (data) => void) {
@@ -60,12 +69,13 @@ export default class AbstractHastePackage {
     // console.error('No override "remove" method found in ' + this.packageName)
     // }
 
-    public activateUponEntry() {
+    public activateUponEntry(item?: HasteRowItem) {
         console.log("No override 'activateUponEntry' method found in " + this.packageName);
     }
 
-    public activateUponTabEntry() {
-        this.activateUponEntry();
+    public activateUponTabEntry(item?: HasteRowItem) {
+        console.log("No override 'activateUponTabEntry' method found in " + this.packageName);
+        this.activateUponEntry(item);
     }
 
     public getIcon(icon) {
@@ -89,5 +99,11 @@ export default class AbstractHastePackage {
         if (this.pkgConfig.shortcut) {
             this.win.unregisterKey(this.pkgConfig.shortcut);
         }
+    }
+
+    private runSearch(obj: SearchObject, callback: (data) => void) {
+        this.haste.fuzzySearch(obj.value).orderBy("score").desc().go()
+            .then(data => callback(data))
+            .catch(err => console.log(err));
     }
 }

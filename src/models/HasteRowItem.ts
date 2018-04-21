@@ -14,6 +14,13 @@ export default class HasteRowItem {
         return item;
     }
 
+    public static isPackage(item: HasteRowItem): boolean {
+        return item.d === "Package"
+            || item.d === "SubPackage"
+            || item.p === "Package"
+            || item.p.startsWith("SubPackage|");
+    }
+
     public db: string;
     public d: string;
     public i: string;

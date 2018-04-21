@@ -1,5 +1,6 @@
 export default class HasteRowItem {
     static create(data: any): HasteRowItem;
+    static isPackage(item: HasteRowItem): boolean;
     db: string;
     d: string;
     i: string;

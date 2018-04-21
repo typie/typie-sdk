@@ -5,7 +5,7 @@ export default class Haste {
     private packageName;
     private command;
     private payload;
-    private dispatcher;
+    private goDispatcher;
     constructor(packageName: string, db?: string);
     pasteText(): this;
     addCollection(): this;
