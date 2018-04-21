@@ -15,8 +15,8 @@ export default class AbstractHastePackage {
     search(obj: SearchObject, callback: (data) => void): void;
     searchWithSubPkgs(obj: SearchObject, defaultDb: string, callback: (data) => void): void;
     activate(rowItem: HasteRowItem, callback: (data) => void): void;
-    activateUponEntry(item?: HasteRowItem): void;
-    activateUponTabEntry(item?: HasteRowItem): void;
+    activateUponEntry(pkgList?: string[], item?: HasteRowItem): void;
+    activateUponTabEntry(pkgList?: string[], item?: HasteRowItem): void;
     getIcon(icon: any): string;
     loadConfig(): void;
     destroy(): void;

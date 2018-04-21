@@ -12,6 +12,7 @@ export default class AbstractHastePackage {
     protected haste: Haste;
     protected pkgConfig: any;
     protected win: any;
+    protected subPackages: any;
 
     constructor(win, config, pkgPath) {
         this.win = win;
@@ -21,6 +22,7 @@ export default class AbstractHastePackage {
         this.packagePath = pkgPath;
         this.icon = getPath(pkgPath + defaultIcon);
         this.haste = new Haste(this.packageName);
+        this.subPackages = {};
         this.loadConfig();
     }
 
@@ -54,6 +56,7 @@ export default class AbstractHastePackage {
     public searchWithSubPkgs(obj: SearchObject, defaultDb: string, callback: (data) => void) {
         if (obj.pkgList.length > 1) {
             const pkg = obj.pkgList.join("->");
+            console.log("search in pkg: " + pkg);
             this.haste.setPkg(pkg).setDB(this.packageName);
             this.runSearch(obj, callback);
         } else {
@@ -69,13 +72,13 @@ export default class AbstractHastePackage {
     // console.error('No override "remove" method found in ' + this.packageName)
     // }
 
-    public activateUponEntry(item?: HasteRowItem) {
+    public activateUponEntry(pkgList?: string[], item?: HasteRowItem) {
         console.log("No override 'activateUponEntry' method found in " + this.packageName);
     }
 
-    public activateUponTabEntry(item?: HasteRowItem) {
+    public activateUponTabEntry(pkgList?: string[], item?: HasteRowItem) {
         console.log("No override 'activateUponTabEntry' method found in " + this.packageName);
-        this.activateUponEntry(item);
+        this.activateUponEntry(pkgList, item);
     }
 
     public getIcon(icon) {
