@@ -5,7 +5,7 @@ import {getPath, Haste, HasteRowItem, SearchObject} from "./index";
 const defaultIcon = "pkg-icon.png";
 
 export default class AbstractHastePackage {
-    protected packageData: object;
+    protected packageData: any;
     protected packageName: string;
     protected packagePath: string;
     protected icon: string;

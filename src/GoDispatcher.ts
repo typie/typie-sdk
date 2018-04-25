@@ -13,8 +13,9 @@ export default class GoDispatcher {
         GoDispatcher.go = new Go({
             defaultCommandTimeoutSec: 60,
             maxCommandsRunning: 10,
-            // path: path.normalize("/Users/rotemgrimberg/go/src/haste-go/haste-go"),
-            path: "C:\\projects\\Go\\src\\haste\\haste.exe",
+            path: "static/bin/haste-go",
+            // path: "/Users/rotemgrimberg/go/src/haste-go/haste-go",
+            // path: "C:\\projects\\Go\\src\\haste\\haste.exe",
         });
         GoDispatcher.go.init(this.register);
     }
