@@ -73,16 +73,42 @@ export default class AbstractHastePackage {
     // }
 
     public activateUponEntry(pkgList?: string[], item?: HasteRowItem) {
-        console.log("No override 'activateUponEntry' method found in " + this.packageName);
+        this.runActivateUponEntry(pkgList, item);
     }
 
     public activateUponTabEntry(pkgList?: string[], item?: HasteRowItem) {
-        console.log("No override 'activateUponTabEntry' method found in " + this.packageName);
-        this.activateUponEntry(pkgList, item);
+        this.runActivateUponTabEntry(pkgList, item);
+    }
+
+    public activateUponEntryWithSubPkgs(pkgList?: string[], item?: HasteRowItem, cb?: () => void) {
+        if (pkgList && pkgList.length > 1) {
+            const subPkgName = "Sub" + pkgList.join("");
+            try {
+                this.subPackages[subPkgName].activateUponTabEntry(pkgList, item);
+            } catch (e) {
+                console.error("no sub package found for '" + subPkgName + "'");
+            }
+            return;
+        } else if (pkgList && pkgList.length === 0) {
+            this.haste.setDB(this.packageName).setPkg(this.packageName);
+        } else if (pkgList && pkgList.length === 1) {
+            this.haste.setDB(this.packageName).setPkg(pkgList[0]);
+        }
+        if (cb) {
+            cb();
+        } else {
+            this.getFirstRecords(10);
+        }
     }
 
     public getIcon(icon) {
         return Path.join(this.packagePath, icon);
+    }
+
+    public getFirstRecords(numOfRecords: number = 10) {
+        this.haste.getRows(numOfRecords).orderBy("unixTime").asc().go()
+            .then(res => this.win.send("resultList", res))
+            .catch(e => console.error("error getting first records", e));
     }
 
     public loadConfig() {
@@ -105,8 +131,21 @@ export default class AbstractHastePackage {
     }
 
     private runSearch(obj: SearchObject, callback: (data) => void) {
-        this.haste.fuzzySearch(obj.value).orderBy("score").desc().go()
-            .then(data => callback(data))
-            .catch(err => console.log(err));
+        if (obj.value.length === 0) {
+            this.activateUponTabEntry(obj.pkgList);
+        } else {
+            this.haste.fuzzySearch(obj.value).orderBy("score").desc().go()
+                .then(data => callback(data))
+                .catch(err => console.log(err));
+        }
+    }
+
+    private runActivateUponEntry(pkgList?: string[], item?: HasteRowItem) {
+        console.log("No override 'activateUponEntry' method found in " + this.packageName);
+    }
+
+    private runActivateUponTabEntry(pkgList?: string[], item?: HasteRowItem) {
+        console.log("No override 'activateUponTabEntry' method found in " + this.packageName);
+        this.activateUponEntry(pkgList, item);
     }
 }

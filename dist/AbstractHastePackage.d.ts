@@ -18,8 +18,12 @@ export default class AbstractHastePackage {
     activate(rowItem: HasteRowItem, callback: (data) => void): void;
     activateUponEntry(pkgList?: string[], item?: HasteRowItem): void;
     activateUponTabEntry(pkgList?: string[], item?: HasteRowItem): void;
+    activateUponEntryWithSubPkgs(pkgList?: string[], item?: HasteRowItem, cb?: () => void): void;
     getIcon(icon: any): string;
+    getFirstRecords(numOfRecords?: number): void;
     loadConfig(): void;
     destroy(): void;
     private runSearch(obj, callback);
+    private runActivateUponEntry(pkgList?, item?);
+    private runActivateUponTabEntry(pkgList?, item?);
 }
