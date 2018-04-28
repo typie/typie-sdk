@@ -15,7 +15,8 @@ export default class AbstractHastePackage {
     insertItem(item: HasteRowItem): void;
     search(obj: SearchObject, callback: (data) => void): void;
     searchWithSubPkgs(obj: SearchObject, defaultDb: string, callback: (data) => void): void;
-    activate(rowItem: HasteRowItem, callback: (data) => void): void;
+    activate(pkgList: string[], rowItem: HasteRowItem, callback: (data) => void): void;
+    activateWithSubPkgs(pkgList: string[], rowItem: HasteRowItem, callback: (data) => void): void;
     activateUponEntry(pkgList?: string[], item?: HasteRowItem): void;
     activateUponTabEntry(pkgList?: string[], item?: HasteRowItem): void;
     activateUponEntryWithSubPkgs(pkgList?: string[], item?: HasteRowItem, cb?: () => void): void;
@@ -23,7 +24,8 @@ export default class AbstractHastePackage {
     getFirstRecords(numOfRecords?: number): void;
     loadConfig(): void;
     destroy(): void;
-    private runSearch(obj, callback);
-    private runActivateUponEntry(pkgList?, item?);
-    private runActivateUponTabEntry(pkgList?, item?);
+    protected runSearch(obj: SearchObject, callback: (data) => void): void;
+    protected runActivate(pkgList: string[], rowItem: HasteRowItem, callback: (data) => void): void;
+    protected runActivateUponEntry(pkgList?: string[], item?: HasteRowItem): void;
+    protected runActivateUponTabEntry(pkgList?: string[], item?: HasteRowItem): void;
 }
