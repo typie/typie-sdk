@@ -11,7 +11,7 @@
     "check": "./node_modules/.bin/tslint --project tsconfig.json --config tslint.json",
     "deploy": "./node_modules/.bin/gulp deploy"
   },
-  "author": "",
+  "author": "Rotem Grimberg <rotemgrim@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^9.6.6",
