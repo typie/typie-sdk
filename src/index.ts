@@ -1,16 +1,18 @@
 
-import AbstractHastePackage from "./AbstractHastePackage";
+import AbstractTypiePackage from "./AbstractTypiePackage";
+import AppGlobal from "./AppGlobal";
 import GoDispatcher from "./GoDispatcher";
-import Haste from "./Haste";
-import HasteRowItem from "./models/HasteRowItem";
 import SearchObject from "./models/SearchObject";
+import TypieRowItem from "./models/TypieRowItem";
+import Typie from "./Typie";
 
 export {
-    AbstractHastePackage,
+    AbstractTypiePackage,
+    AppGlobal,
     getPath,
     GoDispatcher,
-    Haste,
-    HasteRowItem,
+    Typie,
+    TypieRowItem,
     SearchObject,
 };
 

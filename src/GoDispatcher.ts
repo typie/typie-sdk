@@ -9,9 +9,9 @@ export default class GoDispatcher {
     public static listening: boolean;
     private static executablePath: string;
 
-    constructor(hasteExecutable: string) {
-        console.log("Starting Haste Service for the first time", hasteExecutable);
-        GoDispatcher.executablePath = hasteExecutable;
+    constructor(typieExecutable: string) {
+        console.log("Starting Typie Service for the first time", typieExecutable);
+        GoDispatcher.executablePath = typieExecutable;
         this.startProcess();
     }
 
@@ -37,7 +37,7 @@ export default class GoDispatcher {
     }
 
     private startProcess(): void {
-        console.log("Starting Haste Service", GoDispatcher.executablePath);
+        console.log("Starting Typie Service", GoDispatcher.executablePath);
         GoDispatcher.listening = false;
         GoDispatcher.go = new Go({
             defaultCommandTimeoutSec: 60,
@@ -62,7 +62,7 @@ export default class GoDispatcher {
             {command: "start"}, (result: any, response: any) => {
                 if (result.ok) {  // Check if response is ok
                     // In our case we just echo the command, so we can get our text back
-                    console.log("Haste responded: ", response);
+                    console.log("Typie responded: ", response);
                     appGlobal.coreLogPath = response.log;
                     if (response.err === 0) {
                         GoDispatcher.listening = true;

@@ -5,6 +5,7 @@ let libraryName = pkg.name;
 
 module.exports = {
     target: 'node',
+    devtool: 'inline-source-map',
     mode: 'development',
     entry: './src/index.ts',
     output: {

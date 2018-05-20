@@ -1,9 +1,12 @@
-export default class HasteRowItem {
+import {IAction} from "./IAction";
 
-    public static create(data): HasteRowItem {
-        const item = new HasteRowItem();
+export default class TypieRowItem {
+
+    public static create(data): TypieRowItem {
+        const item = new TypieRowItem();
         item.setDB(data.db);
         item.setPackage(data.t);
+        item.setActions(data.a);
         item.setTitle(data.title);
         item.setPath(data.p);
         item.setDescription(data.d);
@@ -14,7 +17,7 @@ export default class HasteRowItem {
         return item;
     }
 
-    public static isPackage(item: HasteRowItem): boolean {
+    public static isPackage(item: TypieRowItem): boolean {
         return item.d === "Package"
             || item.d === "SubPackage"
             || item.p === "Package"
@@ -29,6 +32,7 @@ export default class HasteRowItem {
     public title: string;
     public c: number;
 
+    public a?: IAction[];
     public score?: number;
     public u?: number;
 
@@ -42,7 +46,7 @@ export default class HasteRowItem {
         this.c = 0;
     }
 
-    public setTitle(value: string): HasteRowItem {
+    public setTitle(value: string): TypieRowItem {
         this.title = value;
         return this;
     }
@@ -51,7 +55,15 @@ export default class HasteRowItem {
         return this.title;
     }
 
-    public setPath(value: string): HasteRowItem {
+    public setActions(actionList: IAction[]) {
+        this.a = actionList;
+    }
+
+    public getActions(): IAction[] | undefined {
+        return this.a;
+    }
+
+    public setPath(value: string): TypieRowItem {
         this.p = value;
         return this;
     }
@@ -60,7 +72,7 @@ export default class HasteRowItem {
         return this.p;
     }
 
-    public setDB(value: string): HasteRowItem {
+    public setDB(value: string): TypieRowItem {
         this.db = value;
         return this;
     }
@@ -69,7 +81,7 @@ export default class HasteRowItem {
         return this.db;
     }
 
-    public setDescription(value: string): HasteRowItem {
+    public setDescription(value: string): TypieRowItem {
         this.d = value ? value : "";
         return this;
     }
@@ -78,7 +90,7 @@ export default class HasteRowItem {
         return this.d;
     }
 
-    public setIcon(value: string): HasteRowItem {
+    public setIcon(value: string): TypieRowItem {
         this.i = value;
         return this;
     }
@@ -87,7 +99,7 @@ export default class HasteRowItem {
         return this.i;
     }
 
-    public setPackage(value: string): HasteRowItem {
+    public setPackage(value: string): TypieRowItem {
         this.t = value;
         return this;
     }
@@ -96,7 +108,7 @@ export default class HasteRowItem {
         return this.t;
     }
 
-    public setCount(value: number): HasteRowItem {
+    public setCount(value: number): TypieRowItem {
         this.c = value;
         return this;
     }
@@ -105,7 +117,7 @@ export default class HasteRowItem {
         return this.c;
     }
 
-    public countUp(): HasteRowItem {
+    public countUp(): TypieRowItem {
         this.c = this.c + 1;
         return this;
     }
@@ -118,7 +130,7 @@ export default class HasteRowItem {
         return this.u;
     }
 
-    public setScore(value: number | undefined): HasteRowItem {
+    public setScore(value: number | undefined): TypieRowItem {
         this.score = value;
         return this;
     }
@@ -129,6 +141,7 @@ export default class HasteRowItem {
 
     public toPayload() {
         return {
+            a: this.getActions(),
             c: this.getCount(),
             d: this.getDescription(),
             db: this.getDB(),
