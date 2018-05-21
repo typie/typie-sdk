@@ -15,7 +15,7 @@ export default class TypieRowItem {
     constructor(title?: string);
     setTitle(value: string): TypieRowItem;
     getTitle(): string;
-    setActions(actionList: IAction[]): void;
+    setActions(actionList: IAction[]): TypieRowItem;
     getActions(): IAction[] | undefined;
     setPath(value: string): TypieRowItem;
     getPath(): string;

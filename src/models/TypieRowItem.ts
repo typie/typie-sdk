@@ -55,8 +55,9 @@ export default class TypieRowItem {
         return this.title;
     }
 
-    public setActions(actionList: IAction[]) {
+    public setActions(actionList: IAction[]): TypieRowItem {
         this.a = actionList;
+        return this;
     }
 
     public getActions(): IAction[] | undefined {
