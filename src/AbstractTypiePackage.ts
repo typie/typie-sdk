@@ -7,7 +7,6 @@ const defaultIcon = "pkg-icon.png";
 export default class AbstractTypiePackage {
     protected packageData: any;
     protected packageName: string;
-    protected packagePath: string;
     protected icon: string;
     protected typie: Typie;
     protected pkgConfig: any;
@@ -21,8 +20,7 @@ export default class AbstractTypiePackage {
         this.packageName = pkgName;
         this.db = pkgName;
         this.pkgConfig = config;
-        this.packagePath = "packages/" + pkgName + "/";
-        this.icon = getPath(this.packagePath + defaultIcon);
+        this.icon = this.getPackagePath() + defaultIcon;
         this.typie = new Typie(this.packageName);
         this.packages = {};
         this.loadConfig();
@@ -30,6 +28,10 @@ export default class AbstractTypiePackage {
 
     public getPackageName(): string {
         return this.packageName;
+    }
+
+    public getPackagePath(): string {
+        return getPath("packages/" + this.packageName + "/");
     }
 
     public getDefaultItem(value, description = "", path = "", icon = ""): TypieRowItem {
@@ -74,7 +76,7 @@ export default class AbstractTypiePackage {
     }
 
     public getIcon(icon) {
-        return Path.join(this.packagePath, icon);
+        return Path.join(this.getPackagePath(), icon);
     }
 
     public getFirstRecords(numOfRecords: number = 10) {

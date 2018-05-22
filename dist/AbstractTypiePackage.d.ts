@@ -2,7 +2,6 @@ import { SearchObject, Typie, TypieRowItem } from "./index";
 export default class AbstractTypiePackage {
     protected packageData: any;
     protected packageName: string;
-    protected packagePath: string;
     protected icon: string;
     protected typie: Typie;
     protected pkgConfig: any;
@@ -11,6 +10,7 @@ export default class AbstractTypiePackage {
     protected packages: any;
     constructor(win: any, config: any, pkgName: any);
     getPackageName(): string;
+    getPackagePath(): string;
     getDefaultItem(value: any, description?: string, path?: string, icon?: string): TypieRowItem;
     insert(value: any, description?: string, path?: string, icon?: string): void;
     insertItem(item: TypieRowItem): void;
