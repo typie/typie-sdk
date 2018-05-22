@@ -4,7 +4,7 @@ export default class TypieRowItem {
 
     public static create(data): TypieRowItem {
         const item = new TypieRowItem();
-        item.setDB(data.db);
+        item.setDB(data.db ? data.db : "global");
         item.setPackage(data.t);
         item.setActions(data.a);
         item.setTitle(data.title);

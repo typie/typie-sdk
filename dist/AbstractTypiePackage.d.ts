@@ -16,7 +16,7 @@ export default class AbstractTypiePackage {
     insertItem(item: TypieRowItem): void;
     search(obj: SearchObject, callback: (data) => void): void;
     activate(pkgList: string[], item: TypieRowItem, callback: (data) => void): void;
-    enterPkg(pkgList: string[], item: TypieRowItem, callback: (data) => void): void;
+    enterPkg(pkgList: string[], item?: TypieRowItem, callback?: (data) => void): void;
     clear(pkgList: string[], callback: (data) => void): void;
     remove(pkgList: string[], item: TypieRowItem, callback: (data) => void): void;
     getIcon(icon: any): string;

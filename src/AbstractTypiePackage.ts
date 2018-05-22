@@ -63,7 +63,7 @@ export default class AbstractTypiePackage {
         console.info('No o      verride "activate" method found in ' + this.packageName);
     }
 
-    public enterPkg(pkgList: string[], item: TypieRowItem, callback: (data) => void) {
+    public enterPkg(pkgList: string[], item?: TypieRowItem, callback?: (data) => void) {
         this.getFirstRecords(10);
     }
 
