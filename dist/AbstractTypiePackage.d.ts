@@ -7,8 +7,9 @@ export default class AbstractTypiePackage {
     protected typie: Typie;
     protected pkgConfig: any;
     protected win: any;
+    protected db: string;
     protected packages: any;
-    constructor(win: any, config: any, pkgPath: any);
+    constructor(win: any, config: any, pkgName: any);
     getPackageName(): string;
     getDefaultItem(value: any, description?: string, path?: string, icon?: string): TypieRowItem;
     insert(value: any, description?: string, path?: string, icon?: string): void;

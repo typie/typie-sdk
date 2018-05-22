@@ -12,15 +12,17 @@ export default class AbstractTypiePackage {
     protected typie: Typie;
     protected pkgConfig: any;
     protected win: any;
+    protected db: string;
     protected packages: any;
 
-    constructor(win, config, pkgPath) {
+    constructor(win, config, pkgName) {
         this.win = win;
-        this.packageData = {name: this.constructor.name, path: __dirname};
-        this.packageName = this.constructor.name;
+        this.packageData = {name: pkgName, path: __dirname};
+        this.packageName = pkgName;
+        this.db = pkgName;
         this.pkgConfig = config;
-        this.packagePath = pkgPath;
-        this.icon = getPath(pkgPath + defaultIcon);
+        this.packagePath = "packages/" + pkgName + "/";
+        this.icon = getPath(this.packagePath + defaultIcon);
         this.typie = new Typie(this.packageName);
         this.packages = {};
         this.loadConfig();
