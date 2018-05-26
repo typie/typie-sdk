@@ -54,6 +54,14 @@ export default class Typie {
         return this;
     }
 
+    public remove(item: TypieRowItem) {
+        item.setDB(item.getDB());
+        item.setPackage(item.getPackage());
+        this.command = "remove";
+        this.payload = item.toPayload();
+        return this;
+    }
+
     public getKey(value: string) {
         this.payload.value = value;
         this.payload.db = this.db;

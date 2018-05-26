@@ -12,6 +12,7 @@ export default class Typie {
     updateCalled(item: any): this;
     multipleInsert(itemList: any): this;
     insert(item: TypieRowItem, persist?: boolean): this;
+    remove(item: TypieRowItem): this;
     getKey(value: string): this;
     getExecList(): this;
     fuzzySearch(value: string): this;
