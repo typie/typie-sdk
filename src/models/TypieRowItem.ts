@@ -1,4 +1,5 @@
 import {IAction} from "./IAction";
+import {ILabel} from "./ILabel";
 
 export default class TypieRowItem {
 
@@ -33,6 +34,7 @@ export default class TypieRowItem {
     public c: number;
 
     public a?: IAction[];
+    public l?: ILabel[];
     public score?: number;
     public u?: number;
 
@@ -62,6 +64,15 @@ export default class TypieRowItem {
 
     public getActions(): IAction[] | undefined {
         return this.a;
+    }
+
+    public setLabels(labelList: ILabel[]): TypieRowItem {
+        this.l = labelList;
+        return this;
+    }
+
+    public getLabels(): ILabel[] | undefined {
+        return this.l;
     }
 
     public setPath(value: string): TypieRowItem {
@@ -147,6 +158,7 @@ export default class TypieRowItem {
             d: this.getDescription(),
             db: this.getDB(),
             i: this.getIcon(),
+            l: this.getLabels(),
             p: this.getPath(),
             t: this.getPackage(),
             title: this.getTitle(),

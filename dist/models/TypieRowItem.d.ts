@@ -1,4 +1,5 @@
 import { IAction } from "./IAction";
+import { ILabel } from "./ILabel";
 export default class TypieRowItem {
     static create(data: any): TypieRowItem;
     static isPackage(item: TypieRowItem): boolean;
@@ -10,6 +11,7 @@ export default class TypieRowItem {
     title: string;
     c: number;
     a?: IAction[];
+    l?: ILabel[];
     score?: number;
     u?: number;
     constructor(title?: string);
@@ -17,6 +19,8 @@ export default class TypieRowItem {
     getTitle(): string;
     setActions(actionList: IAction[]): TypieRowItem;
     getActions(): IAction[] | undefined;
+    setLabels(labelList: ILabel[]): TypieRowItem;
+    getLabels(): ILabel[] | undefined;
     setPath(value: string): TypieRowItem;
     getPath(): string;
     setDB(value: string): TypieRowItem;
@@ -40,6 +44,7 @@ export default class TypieRowItem {
         d: string;
         db: string;
         i: string;
+        l: ILabel[] | undefined;
         p: string;
         t: string;
         title: string;
