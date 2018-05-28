@@ -136,6 +136,7 @@ export default class TypieRowItem {
 
     public setUnixtime(value: number | undefined) {
         this.u = value;
+        return this;
     }
 
     public getUnixtime(): number | undefined {

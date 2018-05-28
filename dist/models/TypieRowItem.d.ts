@@ -34,7 +34,7 @@ export default class TypieRowItem {
     setCount(value: number): TypieRowItem;
     getCount(): number;
     countUp(): TypieRowItem;
-    setUnixtime(value: number | undefined): void;
+    setUnixtime(value: number | undefined): this;
     getUnixtime(): number | undefined;
     setScore(value: number | undefined): TypieRowItem;
     getScore(): number | undefined;
