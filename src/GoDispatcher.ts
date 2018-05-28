@@ -1,4 +1,4 @@
-import {Go} from "gonode";
+import {Go} from "typie-go";
 import Packet from "./models/Packet";
 // import * as path from "path";
 const appGlobal: any = global;

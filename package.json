@@ -1,6 +1,6 @@
 {
   "name": "typie-sdk",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "electron-is-dev": "^0.3.0",
-    "gonode": "github:rotemgrim/gonode"
+    "typie-go": "^0.1.5"
   }
 }
