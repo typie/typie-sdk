@@ -91,6 +91,7 @@ export default class AbstractTypiePackage {
             console.log("registering shortcut " + this.pkgConfig.shortcut + " to " + this.getPackageName());
             this.win.registerKey(this.pkgConfig.shortcut, () => {
                 this.win.send("changePackage", [this.getPackageName()]);
+                this.win.show();
             });
         }
     }
