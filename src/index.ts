@@ -5,7 +5,7 @@ import GoDispatcher from "./GoDispatcher";
 import Packet from "./models/Packet";
 import SearchObject from "./models/SearchObject";
 import TypieRowItem from "./models/TypieRowItem";
-import Typie from "./Typie";
+import TypieCore from "./TypieCore";
 
 export {
     AbstractTypiePackage,
@@ -13,7 +13,7 @@ export {
     getPath,
     GoDispatcher,
     Packet,
-    Typie,
+    TypieCore,
     TypieRowItem,
     SearchObject,
 };

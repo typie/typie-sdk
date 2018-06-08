@@ -1,6 +1,6 @@
 import * as Path from "path";
 
-import { getPath, SearchObject, Typie, TypieRowItem } from "./index";
+import { getPath, SearchObject, TypieCore, TypieRowItem } from "./index";
 
 const defaultIcon = "pkg-icon.png";
 
@@ -8,7 +8,7 @@ export default class AbstractTypiePackage {
     protected packageData: any;
     protected packageName: string;
     protected icon: string;
-    protected typie: Typie;
+    protected typie: TypieCore;
     protected pkgConfig: any;
     protected win: any;
     protected db: string;
@@ -21,7 +21,7 @@ export default class AbstractTypiePackage {
         this.db = pkgName;
         this.pkgConfig = config;
         this.icon = this.getPackagePath() + defaultIcon;
-        this.typie = new Typie(this.packageName);
+        this.typie = new TypieCore(this.packageName);
         this.packages = {};
         this.loadConfig();
     }

@@ -1,9 +1,9 @@
-import { SearchObject, Typie, TypieRowItem } from "./index";
+import { SearchObject, TypieCore, TypieRowItem } from "./index";
 export default class AbstractTypiePackage {
     protected packageData: any;
     protected packageName: string;
     protected icon: string;
-    protected typie: Typie;
+    protected typie: TypieCore;
     protected pkgConfig: any;
     protected win: any;
     protected db: string;

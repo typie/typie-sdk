@@ -7,7 +7,7 @@ import TypieRowItem from "./models/TypieRowItem";
 // it is used to get the go dispatcher from the main process we need it as a singleton
 const globalAny: any = global;
 
-export default class Typie {
+export default class TypieCore {
     private search: SearchPayload = new SearchPayload();
     private db: string;
     private packageName: string;
