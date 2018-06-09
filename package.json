@@ -1,6 +1,6 @@
 {
   "name": "typie-sdk",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -28,5 +28,9 @@
   "dependencies": {
     "electron-is-dev": "^0.3.0",
     "typie-go": "^0.1.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/typie/typie-sdk.git"
   }
 }

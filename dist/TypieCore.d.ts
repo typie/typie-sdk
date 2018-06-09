@@ -1,5 +1,5 @@
 import TypieRowItem from "./models/TypieRowItem";
-export default class Typie {
+export default class TypieCore {
     private search;
     private db;
     private packageName;
@@ -14,7 +14,7 @@ export default class Typie {
     insert(item: TypieRowItem, persist?: boolean): this;
     remove(item: TypieRowItem): this;
     getKey(value: string): this;
-    getExecList(): this;
+    getFilesList(allowedExt: string[], dirList: string[]): this;
     fuzzySearch(value: string): this;
     getRows(limit: number): this;
     setPkg(name: string): this;
