@@ -70,9 +70,11 @@ export default class TypieCore {
         return this;
     }
 
-    public getExecList() {
+    public getFilesList(allowedExt: string[], dirList: string[]) {
         this.payload.db = this.db;
         this.payload.packageName = this.packageName;
+        this.payload.allowedExt = allowedExt;
+        this.payload.dirList = dirList;
         this.command = "getExecList";
         return this;
     }
