@@ -49,7 +49,7 @@ export default class AbstractTypiePackage {
 
     public insertItem(item: TypieRowItem) {
         this.typie.insert(item).go()
-            .then(data => console.log(data))
+            .then(data => console.log("insertItem", data))
             .catch(err => console.error(err));
     }
 

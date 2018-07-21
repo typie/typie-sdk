@@ -1,4 +1,5 @@
 import {Go} from "typie-go";
+import AppGlobal from "./AppGlobal";
 import Packet from "./models/Packet";
 // import * as path from "path";
 const appGlobal: any = global;
@@ -10,7 +11,7 @@ export default class GoDispatcher {
     private static executablePath: string;
 
     constructor(typieExecutable: string) {
-        console.log("Starting Typie Service for the first time", typieExecutable);
+        console.info("Starting Typie Service for the first time", typieExecutable);
         GoDispatcher.executablePath = typieExecutable;
         this.startProcess();
     }
@@ -37,21 +38,24 @@ export default class GoDispatcher {
     }
 
     private startProcess(): void {
-        console.log("Starting Typie Service", GoDispatcher.executablePath);
+        console.info("Starting Typie Service", GoDispatcher.executablePath);
         GoDispatcher.listening = false;
         GoDispatcher.go = new Go({
             defaultCommandTimeoutSec: 60,
             maxCommandsRunning: 10,
             path: GoDispatcher.executablePath,
+            persistDir: AppGlobal.paths().getUserDataPath(),
         });
         GoDispatcher.go.init(this.register);
         GoDispatcher.go.on("close", () => this.onClose());
-        GoDispatcher.go.on("error", err => console.error("go dispatcher had error", err));
+        GoDispatcher.go.on("error", err => {
+            console.error("go dispatcher had error", err.data.toString());
+        });
         // setTimeout(() => GoDispatcher.go.terminate(), 10000);
     }
 
     private onClose(): void {
-        console.log("go dispatcher was closed");
+        console.info("go dispatcher was closed");
         if (GoDispatcher.listening) {
             this.startProcess();
         }
@@ -62,7 +66,7 @@ export default class GoDispatcher {
             {command: "start"}, (result: any, response: any) => {
                 if (result.ok) {  // Check if response is ok
                     // In our case we just echo the command, so we can get our text back
-                    console.log("Typie responded: ", response);
+                    console.info("Typie responded: ", response.msg);
                     appGlobal.coreLogPath = response.log;
                     if (response.err === 0) {
                         GoDispatcher.listening = true;
