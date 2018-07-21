@@ -11,6 +11,7 @@ export default class AbstractTypiePackage {
     constructor(win: any, config: any, pkgName: any);
     getPackageName(): string;
     getPackagePath(): string;
+    getFilePackagePath(): string;
     getDefaultItem(value: any, description?: string, path?: string, icon?: string): TypieRowItem;
     insert(value: any, description?: string, path?: string, icon?: string): void;
     insertItem(item: TypieRowItem): void;

@@ -1,4 +1,4 @@
-
+import * as Path from "path";
 import AbstractTypiePackage from "./AbstractTypiePackage";
 import AppGlobal from "./AppGlobal";
 import GoDispatcher from "./GoDispatcher";
@@ -19,7 +19,7 @@ export {
 };
 
 import * as isDev from "electron-is-dev";
-const getPath = (staticPath) => {
+const getPath = (staticPath): string => {
     if (!isDev) {
         return "../static/" + staticPath;
     } else {

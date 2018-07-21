@@ -6,4 +6,4 @@ import SearchObject from "./models/SearchObject";
 import TypieRowItem from "./models/TypieRowItem";
 import TypieCore from "./TypieCore";
 export { AbstractTypiePackage, AppGlobal, getPath, GoDispatcher, Packet, TypieCore, TypieRowItem, SearchObject };
-declare const getPath: (staticPath: any) => any;
+declare const getPath: (staticPath: any) => string;

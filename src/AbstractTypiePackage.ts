@@ -1,6 +1,6 @@
 import * as Path from "path";
-
-import { getPath, SearchObject, TypieCore, TypieRowItem } from "./index";
+import AppGlobal from "./AppGlobal";
+import {getPath, SearchObject, TypieCore, TypieRowItem} from "./index";
 
 const defaultIcon = "pkg-icon.png";
 
@@ -20,7 +20,7 @@ export default class AbstractTypiePackage {
         this.packageName = pkgName;
         this.db = pkgName;
         this.pkgConfig = config;
-        this.icon = this.getPackagePath() + defaultIcon;
+        this.icon = Path.join(this.getFilePackagePath(), defaultIcon);
         this.typie = new TypieCore(this.packageName);
         this.packages = {};
         this.loadConfig();
@@ -32,6 +32,10 @@ export default class AbstractTypiePackage {
 
     public getPackagePath(): string {
         return getPath("packages/" + this.packageName + "/");
+    }
+
+    public getFilePackagePath(): string {
+        return Path.join(AppGlobal.paths().getPackagesPath(), this.packageName);
     }
 
     public getDefaultItem(value, description = "", path = "", icon = ""): TypieRowItem {
@@ -76,7 +80,7 @@ export default class AbstractTypiePackage {
     }
 
     public getIcon(icon) {
-        return Path.join(this.getPackagePath(), icon);
+        return Path.join(this.getFilePackagePath(), icon);
     }
 
     public getFirstRecords(numOfRecords: number = 10) {
