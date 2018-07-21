@@ -1,4 +1,3 @@
-import * as Path from "path";
 import AbstractTypiePackage from "./AbstractTypiePackage";
 import AppGlobal from "./AppGlobal";
 import GoDispatcher from "./GoDispatcher";
