@@ -29,6 +29,14 @@ export default class TypieCore {
         return this;
     }
 
+    public switchTo(item: TypieRowItem) {
+        item.setDB(item.getDB());
+        item.setPackage(item.getPackage());
+        this.command = "switchTo";
+        this.payload = item.toPayload();
+        return this;
+    }
+
     public addCollection() {
         this.command = "addCollection";
         this.payload = {name: this.packageName};

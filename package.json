@@ -1,6 +1,6 @@
 {
   "name": "typie-sdk",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -14,19 +14,19 @@
   "author": "Rotem Grimberg <rotemgrim@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^9.6.6",
-    "gulp": "^4.0.0",
-    "gulp-clean": "^0.4.0",
-    "js-yaml": "^3.11.0",
-    "ts-loader": "^4.1.0",
-    "tslint": "^5.9.1",
-    "tslint-loader": "^3.6.0",
-    "typescript": "^2.6.2",
-    "webpack": "^4.5.0",
-    "webpack-cli": "^2.0.13"
+    "@types/node": "9.6.6",
+    "gulp": "4.0.0",
+    "gulp-clean": "0.4.0",
+    "js-yaml": "3.11.0",
+    "ts-loader": "4.1.0",
+    "tslint": "5.9.1",
+    "tslint-loader": "3.6.0",
+    "typescript": "2.6.2",
+    "webpack": "4.5.0",
+    "webpack-cli": "2.0.13"
   },
   "dependencies": {
-    "electron-is-dev": "^0.3.0",
+    "electron-is-dev": "0.3.0",
     "typie-go": "^0.1.6"
   },
   "repository": {
