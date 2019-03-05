@@ -7,7 +7,11 @@ export default class TypieCore {
     private payload;
     private goDispatcher;
     constructor(packageName: string, db?: string);
+    setCustomCommand(command: string): this;
+    setCustomPayload(payload: any): this;
     pasteText(): this;
+    generateSwitchList(): this;
+    switchTo(item: TypieRowItem): this;
     addCollection(): this;
     updateCalled(item: any): this;
     multipleInsert(itemList: any): this;

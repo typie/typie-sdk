@@ -23,8 +23,24 @@ export default class TypieCore {
         this.payload = {};
     }
 
+    public setCustomCommand(command: string) {
+        this.command = command;
+        return this;
+    }
+
+    public setCustomPayload(payload: any) {
+        this.payload = payload;
+        return this;
+    }
+
     public pasteText() {
         this.command = "pasteText";
+        this.payload = {};
+        return this;
+    }
+
+    public generateSwitchList() {
+        this.command = "generateSwitchList";
         this.payload = {};
         return this;
     }
