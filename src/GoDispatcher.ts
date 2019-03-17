@@ -1,3 +1,4 @@
+import {EventEmitter} from "events";
 import {Go} from "typie-go";
 import AppGlobal from "./AppGlobal";
 import Packet from "./models/Packet";
@@ -8,11 +9,13 @@ export default class GoDispatcher {
 
     public static go: any;
     public static listening: boolean;
+    public static emitter: EventEmitter;
     private static executablePath: string;
 
     constructor(typieExecutable: string) {
         console.info("Starting Typie Service for the first time", typieExecutable);
         GoDispatcher.executablePath = typieExecutable;
+        GoDispatcher.emitter = new EventEmitter();
         this.startProcess();
     }
 
@@ -70,6 +73,7 @@ export default class GoDispatcher {
                     appGlobal.coreLogPath = response.log;
                     if (response.err === 0) {
                         GoDispatcher.listening = true;
+                        GoDispatcher.emitter.emit("typieServiceListening");
                     }
                 }
             });
